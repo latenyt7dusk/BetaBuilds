@@ -73,6 +73,7 @@ public class VTable extends JTable implements VTheme{
                 getTableHeader().setBackground(getSelectionBackground());
                 getTableHeader().setForeground(getSelectionForeground());
                 Model = (DefaultTableModel) getModel();
+                getTableHeader().repaint();
             }
         });
 
