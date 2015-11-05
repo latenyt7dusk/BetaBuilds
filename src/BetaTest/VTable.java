@@ -44,7 +44,7 @@ public class VTable extends JTable implements VTheme{
     private boolean ThemeVisible = true;
     private boolean SubVisible = true;
     
-    private DefaultTableModel Model = (DefaultTableModel) getModel();
+    
 
     public VTable() {
 
@@ -54,25 +54,16 @@ public class VTable extends JTable implements VTheme{
         getTableHeader().setOpaque(false);
         setOpaque(false);
 
+        DefaultTableModel Model = (DefaultTableModel) getModel();
+        
         ((DefaultTableCellRenderer) getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         setAutoCreateRowSorter(true);
-        setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{
-                    {null, null, null, null},
-                    {null, null, null, null},
-                    {null, null, null, null},
-                    {null, null, null, null}
-                },
-                new String[]{
-                    "Title 1", "Title 2", "Title 3", "Title 4"
-                }
-        ));
+        
 
         addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 getTableHeader().setBackground(getSelectionBackground());
                 getTableHeader().setForeground(getSelectionForeground());
-                Model = (DefaultTableModel) getModel();
                 getTableHeader().repaint();
             }
         });
@@ -107,6 +98,7 @@ public class VTable extends JTable implements VTheme{
     }
 
     public void AddRowData(List<String> e) {
+        DefaultTableModel Model = (DefaultTableModel) getModel();
         try {
             if (e.size() == Model.getColumnCount()) {
                 Model.addRow(e.toArray());
@@ -119,6 +111,7 @@ public class VTable extends JTable implements VTheme{
     }
 
     public void AddTableData(List<String> title, List<List> e) {
+        DefaultTableModel Model = (DefaultTableModel) getModel();
         try {
             if (e.get(0).size() == Model.getColumnCount()) {
                 Model.setColumnIdentifiers(title.toArray());
@@ -135,6 +128,7 @@ public class VTable extends JTable implements VTheme{
     }
 
     public int[] SearchData(String e, boolean b) {
+        DefaultTableModel Model = (DefaultTableModel) getModel();
         try {
             List<Integer> rows = new ArrayList();
             int rowss[] = {};
@@ -161,6 +155,7 @@ public class VTable extends JTable implements VTheme{
     }
 
     public Integer[] SearchColumnData(String e, int j, boolean b) {
+        DefaultTableModel Model = (DefaultTableModel) getModel();
         try {
             List<Integer> rows = new ArrayList();
             if (Model.getRowCount() > 0) {
