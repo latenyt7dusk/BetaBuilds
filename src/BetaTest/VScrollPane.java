@@ -22,13 +22,12 @@ import java.awt.Dimension;
 import javax.swing.Icon;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.plaf.metal.MetalScrollBarUI;
 
 /**
  *
  * @author late7dusk
  */
-public class VScrollPane extends JScrollPane implements VTheme,VScrollBarUI.VScrollTheme{
+public class VScrollPane extends JScrollPane implements VTheme{
     
     private int ThemeAlpha = 255;
     private Color ThemeColor = new Color(51, 153, 255, ThemeAlpha);
@@ -38,10 +37,10 @@ public class VScrollPane extends JScrollPane implements VTheme,VScrollBarUI.VScr
     private boolean ThemeVisible = true;
     private boolean SubVisible = true;
     
-    private static Color ScrollBackground;
-    private static Color ScrollTrackColor;
-    private static Color ScrollThumbNormalColor;
-    private static Color ScrollThumbHoverColor;
+    private static Color ScrollBackground = new Color(0,0,0,0);
+    private static Color ScrollTrackColor = new Color(35, 35, 35);
+    private static Color ScrollThumbNormalColor = new Color(153, 153, 153);
+    private static Color ScrollThumbHoverColor = new Color(51, 153, 255);
     private static int ScrollWidth = 10;
     
     private static VScrollBarUI.VScrollBarStyle VScrollStyle = VScrollBarUI.VScrollBarStyle.STYLE_ROUNDED;
@@ -49,10 +48,6 @@ public class VScrollPane extends JScrollPane implements VTheme,VScrollBarUI.VScr
     
     public VScrollPane(){
         
-        setScrollBackground(new Color(0,0,0,0));
-        setScrollTrackColor(new Color(35, 35, 35));
-        setScrollThumbNormalColor(new Color(153, 153, 153));
-        setScrollThumbHoverColor(new Color(51, 153, 255));
         
         setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -74,63 +69,51 @@ public class VScrollPane extends JScrollPane implements VTheme,VScrollBarUI.VScr
     
     
     
-    @Override
     public void setScrollWidth(int i) {
         ScrollWidth = i;
     }
 
-    @Override
     public int getScrollWidth() {
         return ScrollWidth;
     }
 
-    @Override
     public void setScrollTrackColor(Color c) {
         ScrollTrackColor = c;
     }
 
-    @Override
     public Color getScrollTrackColor() {
         return ScrollTrackColor;
         
     }
 
-    @Override
     public void setScrollThumbNormalColor(Color c) {
         ScrollThumbNormalColor = c;
     }
 
-    @Override
     public Color getScrollThumbNormalColor() {
         return ScrollThumbNormalColor;
     }
 
-    @Override
     public void setScrollThumbHoverColor(Color c) {
         ScrollThumbHoverColor = c;
     }
 
-    @Override
     public Color getScrollThumbHoverColor() {
         return ScrollThumbHoverColor;
     }
 
-    @Override
     public void setVScrollBarStyle(VScrollBarUI.VScrollBarStyle s) {
         VScrollStyle = s;
     }
 
-    @Override
     public VScrollBarUI.VScrollBarStyle getVScrollBarStyle() {
         return VScrollStyle;
     }
 
-    @Override
     public void setScrollBackground(Color c) {
         ScrollBackground = c;
     }
 
-    @Override
     public Color getScrollBackground() {
         return ScrollBackground;
     }

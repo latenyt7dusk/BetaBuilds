@@ -47,6 +47,8 @@ public class VScrollBarUI {
     public MetalScrollBarUI createVerticalScrollBar(Color bg, Color Track, Color Thumbnormal, Color Thumbhover, int style) {
         return new VScrollbarUI(bg, Track, Thumbnormal, Thumbhover, style);
     }
+    
+    
 
     private class VScrollbarUI extends MetalScrollBarUI {
 

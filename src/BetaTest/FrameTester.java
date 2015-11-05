@@ -33,6 +33,9 @@ public class FrameTester extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        vScrollPane1.setScrollThumbHoverColor(new java.awt.Color(255, 102, 102));
+        vScrollPane1.setScrollTrackColor(new java.awt.Color(204, 204, 204));
+
         vTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -63,6 +66,7 @@ public class FrameTester extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        vTable1.setSelectionBackground(new java.awt.Color(255, 102, 102));
         vScrollPane1.setViewportView(vTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

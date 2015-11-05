@@ -16,6 +16,7 @@
  */
 package BetaTest;
 
+import BetaTest.VScrollBarUI.VScrollBarStyle;
 import java.awt.Color;
 
 /**
@@ -24,8 +25,16 @@ import java.awt.Color;
  */
 public class VThemeManager {
     
-    public static void setScrollBarUITheme(Color thmbn,Color thmbh,Color trck){
+    private Color ScrollBackground = new Color(0,0,0,0);
+    private Color ScrollTrackColor = new Color(35, 35, 35);
+    private Color ScrollThumbNormalColor = new Color(153, 153, 153);
+    private Color ScrollThumbHoverColor = new Color(51, 153, 255);
+    private int ScrollWidth = 10;
+    
+    public void setScrollPaneUITheme(VScrollBarStyle style,Color bg,Color thmbn,Color thmbh,Color trck){
         
     }
+    
+    
     
 }
