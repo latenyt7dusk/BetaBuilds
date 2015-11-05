@@ -18,8 +18,17 @@ package BetaTest;
 
 import Finalized.VTheme;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.Icon;
 import javax.swing.JTable;
+import javax.swing.JViewport;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -34,6 +43,142 @@ public class VTable extends JTable implements VTheme{
     private Icon VImage = null;
     private boolean ThemeVisible = true;
     private boolean SubVisible = true;
+    
+    private DefaultTableModel Model = (DefaultTableModel) getModel();
+
+    public VTable() {
+
+        getTableHeader().setBackground(getSelectionBackground());
+        getTableHeader().setForeground(getSelectionForeground());
+        getTableHeader().setFont(new Font("Sanserif", 1, 11));
+        getTableHeader().setOpaque(false);
+        setOpaque(false);
+
+        ((DefaultTableCellRenderer) getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        setAutoCreateRowSorter(true);
+        setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{
+                    {null, null, null, null},
+                    {null, null, null, null},
+                    {null, null, null, null},
+                    {null, null, null, null}
+                },
+                new String[]{
+                    "Title 1", "Title 2", "Title 3", "Title 4"
+                }
+        ));
+
+        addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                getTableHeader().setBackground(getSelectionBackground());
+                getTableHeader().setForeground(getSelectionForeground());
+                Model = (DefaultTableModel) getModel();
+            }
+        });
+
+    }
+    
+    public void ScrollTo(int rowIndex, int vColIndex) {
+        if (!(this.getParent() instanceof JViewport)) {
+            return;
+        }
+        JViewport viewport = (JViewport) this.getParent();
+
+        // This rectangle is relative to the table where the
+        // northwest corner of cell (0,0) is always (0,0).
+        Rectangle rect = this.getCellRect(rowIndex, vColIndex, true);
+
+        // The location of the viewport relative to the table
+        Point pt = viewport.getViewPosition();
+
+        // Translate the cell location so that it is relative
+        // to the view, assuming the northwest corner of the
+        // view is (0,0)
+        rect.setLocation(rect.x - pt.x, rect.y - pt.y);
+
+        this.scrollRectToVisible(rect);
+        this.setRowSelectionInterval(rowIndex, rowIndex);
+
+        // Scroll the area into view
+        //viewport.scrollRectToVisible(rect);
+    }
+
+    public void AddRowData(List<String> e) {
+        try {
+            if (e.size() == Model.getColumnCount()) {
+                Model.addRow(e.toArray());
+            } else {
+                System.out.println(getName() + " " + "Incorrect Data Entry lenght");
+            }
+        } catch (Exception er) {
+
+        }
+    }
+
+    public void AddTableData(List<String> title, List<List> e) {
+        try {
+            if (e.get(0).size() == Model.getColumnCount()) {
+                Model.setColumnIdentifiers(title.toArray());
+                for (int i = 0; i < e.size(); i++) {
+                    Object data[] = e.get(i).toArray();
+                    Model.addRow(data);
+                }
+            } else {
+                System.out.println(getName() + " " + "Incorrect Data Entry lenght");
+            }
+        } catch (Exception er) {
+
+        }
+    }
+
+    public int[] SearchData(String e, boolean b) {
+        try {
+            List<Integer> rows = new ArrayList();
+            int rowss[] = {};
+            if (Model.getRowCount() > 0) {
+                for (int i = 0; i < Model.getRowCount(); i++) {
+                    for (int j = 0; j < Model.getColumnCount(); j++) {
+                        if (b) {
+                            if (e.equalsIgnoreCase(Model.getValueAt(i, j).toString())) {
+
+                            }
+                        } else {
+                            if (Model.getValueAt(i, j).toString().toUpperCase().contains(e.toUpperCase())) {
+                                rows.add(i);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return null;
+        } catch (Exception er) {
+            return null;
+        }
+    }
+
+    public Integer[] SearchColumnData(String e, int j, boolean b) {
+        try {
+            List<Integer> rows = new ArrayList();
+            if (Model.getRowCount() > 0) {
+                for (int i = 0; i < Model.getRowCount(); i++) {
+                    if (b) {
+                        if (e.equalsIgnoreCase(Model.getValueAt(i, j).toString())) {
+                            rows.add(i);
+                        }
+                    } else {
+                        if (Model.getValueAt(i, j).toString().toUpperCase().contains(e.toUpperCase())) {
+                            rows.add(i);
+                        }
+                    }
+                }
+            }
+            Integer tst[] = new Integer[rows.size()];
+            return tst;
+        } catch (Exception er) {
+            return null;
+        }
+    }
     
     @Override
     public void setVThemeColor(Color c) {
