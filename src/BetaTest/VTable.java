@@ -153,7 +153,7 @@ public class VTable extends JTable {
         }
     }
 
-    public Integer[] SearchColumnData(String e, int j, boolean b) {
+    public int[] SearchColumnData(String e, int j, boolean b) {
         DefaultTableModel Model = (DefaultTableModel) getModel();
         try {
             List<Integer> rows = new ArrayList();
@@ -170,7 +170,7 @@ public class VTable extends JTable {
                     }
                 }
             }
-            Integer tst[] = new Integer[rows.size()];
+            int tst[] = new int[rows.size()];
             return tst;
         } catch (Exception er) {
             return null;
