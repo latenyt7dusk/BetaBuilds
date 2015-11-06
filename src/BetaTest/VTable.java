@@ -16,7 +16,6 @@
  */
 package BetaTest;
 
-import Finalized.VTheme;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Point;
@@ -36,11 +35,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VTable extends JTable {
     
-    
+    private Color HeaderBackground = VThemeManager.HeaderBackgound;
 
     public VTable() {
 
-        getTableHeader().setBackground(getSelectionBackground());
+        getTableHeader().setBackground(HeaderBackground);
         getTableHeader().setForeground(getSelectionForeground());
         getTableHeader().setFont(new Font("Sanserif", 1, 11));
         getTableHeader().setOpaque(false);
@@ -54,7 +53,7 @@ public class VTable extends JTable {
 
         addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                getTableHeader().setBackground(getSelectionBackground());
+                getTableHeader().setBackground(HeaderBackground);
                 getTableHeader().setForeground(getSelectionForeground());
                 getTableHeader().repaint();
             }
@@ -63,8 +62,13 @@ public class VTable extends JTable {
 
     }
     
-    public void setTableHeaderBackground(Color c){
-        
+    public void setHeaderBackground(Color c){
+        this.HeaderBackground = c;
+        getTableHeader().setBackground(HeaderBackground);
+    }
+    
+    public Color getHeaderBackground(){
+        return HeaderBackground;
     }
     
     public void ScrollTo(int rowIndex, int vColIndex) {
