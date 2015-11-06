@@ -27,23 +27,17 @@ import javax.swing.ScrollPaneConstants;
  *
  * @author late7dusk
  */
-public class VScrollPane extends JScrollPane implements VTheme{
+public class VScrollPane extends JScrollPane {
     
-    private int ThemeAlpha = 255;
-    private Color ThemeColor = new Color(51, 153, 255, ThemeAlpha);
-    private int SubAlpha = 255;
-    private Color SubColor = new Color(35, 35, 35, SubAlpha);
-    private Icon VImage = null;
-    private boolean ThemeVisible = true;
-    private boolean SubVisible = true;
     
-    private static Color ScrollBackground = new Color(0,0,0,0);
-    private static Color ScrollTrackColor = new Color(35, 35, 35);
-    private static Color ScrollThumbNormalColor = new Color(153, 153, 153);
-    private static Color ScrollThumbHoverColor = new Color(51, 153, 255);
-    private static int ScrollWidth = 10;
     
-    private static VScrollBarUI.VScrollBarStyle VScrollStyle = VScrollBarUI.VScrollBarStyle.STYLE_ROUNDED;
+    private static final Color ScrollBackground = VThemeManager.ScrollBackground;
+    private static final Color ScrollTrackColor = VThemeManager.ScrollTrackColor;
+    private static final Color ScrollThumbNormalColor = VThemeManager.ScrollThumbNormalColor;
+    private static final Color ScrollThumbHoverColor = VThemeManager.ScrollThumbHoverColor;
+    private static final int ScrollWidth = VThemeManager.ScrollWidth;
+    
+    private static final VScrollBarUI.VScrollBarStyle VScrollStyle = VThemeManager.VScrollStyle;
     
     
     public VScrollPane(){
@@ -67,127 +61,4 @@ public class VScrollPane extends JScrollPane implements VTheme{
         
     }
     
-    
-    
-    public void setScrollWidth(int i) {
-        ScrollWidth = i;
-    }
-
-    public int getScrollWidth() {
-        return ScrollWidth;
-    }
-
-    public void setScrollTrackColor(Color c) {
-        ScrollTrackColor = c;
-    }
-
-    public Color getScrollTrackColor() {
-        return ScrollTrackColor;
-        
-    }
-
-    public void setScrollThumbNormalColor(Color c) {
-        ScrollThumbNormalColor = c;
-    }
-
-    public Color getScrollThumbNormalColor() {
-        return ScrollThumbNormalColor;
-    }
-
-    public void setScrollThumbHoverColor(Color c) {
-        ScrollThumbHoverColor = c;
-    }
-
-    public Color getScrollThumbHoverColor() {
-        return ScrollThumbHoverColor;
-    }
-
-    public void setVScrollBarStyle(VScrollBarUI.VScrollBarStyle s) {
-        VScrollStyle = s;
-    }
-
-    public VScrollBarUI.VScrollBarStyle getVScrollBarStyle() {
-        return VScrollStyle;
-    }
-
-    public void setScrollBackground(Color c) {
-        ScrollBackground = c;
-    }
-
-    public Color getScrollBackground() {
-        return ScrollBackground;
-    }
-    
-    
-    @Override
-    public void setVThemeColor(Color c) {
-        this.ThemeColor = new Color(c.getRed(), c.getGreen(), c.getBlue(), ThemeAlpha);
-    }
-
-    @Override
-    public Color getVThemeColor() {
-        return ThemeColor;
-    }
-
-    @Override
-    public void setVThemeAlpha(int i) {
-        this.ThemeAlpha = ((i > 255 || i < 0) ? 255 : i);
-        this.ThemeColor = new Color(ThemeColor.getRed(), ThemeColor.getGreen(), ThemeColor.getBlue(), ThemeAlpha);
-    }
-
-    @Override
-    public int getVThemeAlpha() {
-        return ThemeAlpha;
-    }
-
-    @Override
-    public void setVSubColor(Color c) {
-        this.SubColor = new Color(c.getRed(), c.getGreen(), c.getBlue(), SubAlpha);
-    }
-
-    @Override
-    public Color getVSubColor() {
-        return SubColor;
-    }
-
-    @Override
-    public void setVSubAlpha(int i) {
-        this.SubAlpha = ((i > 255 || i < 0) ? 255 : i);
-        this.SubColor = new Color(SubColor.getRed(), SubColor.getGreen(), SubColor.getBlue(), SubAlpha);
-    }
-
-    @Override
-    public int getVSubAlpha() {
-        return SubAlpha;
-    }
-
-    @Override
-    public void setVImage(Icon i) {
-        this.VImage = i;
-    }
-
-    @Override
-    public Icon getVImage() {
-        return VImage;
-    }
-
-    @Override
-    public void setVThemeVisible(boolean b) {
-        this.ThemeVisible = b;
-    }
-
-    @Override
-    public boolean isVThemeVisible() {
-        return ThemeVisible;
-    }
-
-    @Override
-    public void setVSubVisible(boolean b) {
-        this.SubVisible = b;
-    }
-
-    @Override
-    public boolean isVSubVisible() {
-        return SubVisible;
-    }
 }

@@ -16,8 +16,11 @@
  */
 package BetaTest;
 
-import BetaTest.VScrollBarUI.VScrollBarStyle;
+
 import java.awt.Color;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.Properties;
 
 /**
  *
@@ -25,15 +28,47 @@ import java.awt.Color;
  */
 public class VThemeManager {
     
-    private Color ScrollBackground = new Color(0,0,0,0);
-    private Color ScrollTrackColor = new Color(35, 35, 35);
-    private Color ScrollThumbNormalColor = new Color(153, 153, 153);
-    private Color ScrollThumbHoverColor = new Color(51, 153, 255);
-    private int ScrollWidth = 10;
+    private Properties props = new Properties();
     
-    public void setScrollPaneUITheme(VScrollBarStyle style,Color bg,Color thmbn,Color thmbh,Color trck){
-        
+    public VThemeManager(String loc){
+        try{
+            InputStream is = new FileInputStream(loc);
+            props.load(is);
+            
+            
+        }catch(Exception er){
+            System.exit(1);
+        }
     }
+    
+    
+    private static Color VThemeColor = new Color(51, 153, 255);//Default Base
+    private static Color VSubColor = new Color(15, 15, 15);//Default Sub
+    
+    private static Color VBackground = new Color(255,255,255);//Default Background
+    private static Color VForeground = new Color(35,35,35);//Default Foreground
+    
+    private static Color VNormalground = new Color(153,153,153);//Default Normal act
+    private static Color VHoverground = new Color(51,153,255);//Default Hover act
+    private static Color VErrorground = Color.RED.darker();//Default Error act
+    private static Color VPassground = Color.GREEN.darker();//Default Pass act
+    
+    private static Color VTransparent = new Color(0,0,0,0);//Transparent
+    
+    
+    
+    
+    
+    
+    
+    public static Color ScrollBackground = VTransparent;
+    public static Color ScrollTrackColor = VForeground;
+    public static Color ScrollThumbNormalColor = VNormalground;
+    public static Color ScrollThumbHoverColor = VThemeColor;
+    public static int ScrollWidth = 10;
+    
+    public static VScrollBarUI.VScrollBarStyle VScrollStyle = VScrollBarUI.VScrollBarStyle.STYLE_ROUNDED;
+    
     
     
     
