@@ -16,10 +16,8 @@
  */
 package BetaTest;
 
-import Finalized.VTheme;
 import java.awt.Color;
 import java.awt.Dimension;
-import javax.swing.Icon;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
