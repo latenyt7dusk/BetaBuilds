@@ -28,32 +28,49 @@ import java.util.Properties;
  */
 public class VThemeManager {
     
-    private Properties props = new Properties();
     
-    public VThemeManager(String loc){
+    private static Properties props = LoadProperties("C:\\Documents and Settings\\HERU\\Desktop\\VThemeProps.properties");
+    
+    public static Properties LoadProperties(String loc){
         try{
             InputStream is = new FileInputStream(loc);
-            props.load(is);
-            
-            
+            Properties i = new Properties();
+            i.load(is);
+            return i;
         }catch(Exception er){
-            System.exit(1);
+            return null;
+        }
+    }
+    
+    private static Color fetchColorProps(String p){
+        try{
+            String e = props.getProperty(p);
+            System.out.println(e);
+            String es[] = e.split("[,]");
+            
+            if(es.length > 3){
+                return new Color(Integer.parseInt(es[0]),Integer.parseInt(es[1]),Integer.parseInt(es[2]),Integer.parseInt(es[3]));
+            }else{
+                return new Color(Integer.parseInt(es[0]),Integer.parseInt(es[1]),Integer.parseInt(es[2]));
+            }
+        }catch(Exception er){
+            return Color.WHITE;
         }
     }
     
     
-    private static Color VThemeColor = new Color(51, 153, 255);//Default Base
-    private static Color VSubColor = new Color(15, 15, 15);//Default Sub
+    private static Color VThemeColor = fetchColorProps("VThemeColor");//Default Base 51,153,255
+    private static Color VSubColor = fetchColorProps("VSubColor");//Default Sub 153,153,153
     
-    private static Color VBackground = new Color(255,255,255);//Default Background
-    private static Color VForeground = new Color(35,35,35);//Default Foreground
+    private static Color VBackground = fetchColorProps("VBackground");//Default Background 255,255,255
+    private static Color VForeground = fetchColorProps("VForeground");//Default Foreground 35,35,35
     
-    private static Color VNormalground = new Color(153,153,153);//Default Normal act
-    private static Color VHoverground = new Color(51,153,255);//Default Hover act
-    private static Color VErrorground = Color.RED.darker();//Default Error act
-    private static Color VPassground = Color.GREEN.darker();//Default Pass act
+    private static Color VNormalground = fetchColorProps("VNormalground");//Default Normal act 153,153,153
+    private static Color VHoverground = fetchColorProps("VHoverground");//Default Hover act 51,153,255
+    private static Color VErrorground = fetchColorProps("VErrorground");//Default Error act 220,0,0
+    private static Color VPassground = fetchColorProps("VPassground");//Default Pass act 0,190,0
     
-    private static Color VTransparent = new Color(0,0,0,0);//Transparent
+    private static Color VTransparent = fetchColorProps("VTransparent");//Transparent 0,0,0
     
     
     
