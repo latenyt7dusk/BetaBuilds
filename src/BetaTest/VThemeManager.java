@@ -29,7 +29,7 @@ import java.util.Properties;
  */
 public class VThemeManager {
     
-    private static final String pp = System.getProperty("user.home")+File.separator+"Desktop"+File.separator+"NSoftwares"+File.separator+"VThemeProps.properties";
+    private static final String pp = System.getProperty("user.home")+File.separator+"NSoftwares"+File.separator+"VThemeProps.def";
     private static Properties props = LoadProperties(pp);
     
     public static Properties LoadProperties(String loc){
