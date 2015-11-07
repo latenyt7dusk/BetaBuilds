@@ -28,7 +28,7 @@ import javax.swing.JPanel;
  */
 public class VContainer extends VScrollPane {
 
-    public String e = "Tama na";
+    private VContainer CONTAINER = this;
     
     private VContainerLayout VCLayout = VContainerLayout.Y_AXIS;
     private Dimension size = new Dimension(250, 250);
@@ -90,6 +90,26 @@ public class VContainer extends VScrollPane {
         return VCLayout;
     }
 
+    
+    
+    private class VItem extends JPanel{
+    
+    public static final int NORMAL = 0;
+    public static final int EXPANDING_RIGHT = 1;
+    public static final int EXPANDING_BOTTOM = 2;
+    public static final int EXPANDING_TOP = 3;
+    public static final int EXPANDING_LEFT = 4;
+    
+    private int TYPE = NORMAL;
+    
+    public VItem(){
+    
+    }
+    
+   
+    
+}
+    
     
     public enum VContainerLayout {
         X_AXIS(0), Y_AXIS(1);
