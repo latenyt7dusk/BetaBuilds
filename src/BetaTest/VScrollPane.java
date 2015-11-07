@@ -42,10 +42,15 @@ public class VScrollPane extends JScrollPane {
         
         
         setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-        setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         getVerticalScrollBar().setUI(new VScrollBarUI().createVerticalScrollBar(ScrollBackground, ScrollTrackColor, ScrollThumbNormalColor, ScrollThumbHoverColor, VScrollStyle.Value()));//VScrollBarUI.SIMPLE_LINE
         getVerticalScrollBar().setPreferredSize(new Dimension(ScrollWidth, 0));
         getVerticalScrollBar().setOpaque(false);
+        
+        getHorizontalScrollBar().setUI(new VScrollBarUI().createVerticalScrollBar(ScrollBackground, ScrollTrackColor, ScrollThumbNormalColor, ScrollThumbHoverColor, VScrollStyle.Value()));//VScrollBarUI.SIMPLE_LINE
+        getHorizontalScrollBar().setPreferredSize(new Dimension(0,ScrollWidth));
+        getHorizontalScrollBar().setOpaque(false);
+        
         getViewport().setOpaque(false);
         setBorder(javax.swing.BorderFactory.createEmptyBorder());
         setOpaque(false);
