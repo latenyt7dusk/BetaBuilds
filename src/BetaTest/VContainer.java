@@ -16,6 +16,7 @@
  */
 package BetaTest;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -54,26 +55,8 @@ public class VContainer extends VScrollPane {
 
     }
     
-    public void addItem(Component e){
-        if(VCLayout == VContainerLayout.X_AXIS){
-            e.setPreferredSize(new Dimension(e.getPreferredSize().width,size.height));
-        }else{
-            e.setPreferredSize(new Dimension(size.width,e.getPreferredSize().height));
-        }
-        ItemContainer.add(e);
-        updateUI();
-    }
     
-    public void addVItem(VItem e){
-        if(VCLayout == VContainerLayout.X_AXIS){
-            e.setPreferredSize(new Dimension(e.getPreferredSize().width,size.height));
-        }else{
-            e.setPreferredSize(new Dimension(size.width,e.getPreferredSize().height));
-        }
-        ItemContainer.add(e);
-        updateUI();
-    }
-
+    
     public void setVContainerSize(Dimension e) {
         this.size = e;
     }
@@ -94,16 +77,30 @@ public class VContainer extends VScrollPane {
     
     private class VItem extends JPanel{
     
-    public static final int NORMAL = 0;
-    public static final int EXPANDING_RIGHT = 1;
-    public static final int EXPANDING_BOTTOM = 2;
-    public static final int EXPANDING_TOP = 3;
-    public static final int EXPANDING_LEFT = 4;
+    private static final int NORMAL = 0;
+    private static final int EXPANDING_RIGHT = 1;
+    private static final int EXPANDING_BOTTOM = 2;
+    private static final int EXPANDING_TOP = 3;
+    private static final int EXPANDING_LEFT = 4;
     
-    private int TYPE = NORMAL;
+    private final int TYPE;
+    private final VContainer cont;
     
-    public VItem(){
-    
+    public VItem(VContainer e,Component m,Component ex,int type){
+        this.TYPE = type;
+        this.cont = e;
+        setOpaque(false);
+        if(TYPE == EXPANDING_BOTTOM){
+            
+        }else if(TYPE == EXPANDING_RIGHT){
+            
+        }else if(TYPE == EXPANDING_LEFT){
+            
+        }else if(TYPE == EXPANDING_TOP){
+            
+        }else{
+            setLayout(new CardLayout());
+        }
     }
     
    
