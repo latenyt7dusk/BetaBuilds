@@ -20,38 +20,18 @@ package SystemClass;
  *
  * @author HERU
  */
-public class User extends PersonalInfo{
+public class Registrar {
     
-    private String uname,upass,role;
     
-    public User(){
-        this(null,null,null);
-    }
-    public User(String u,String p,String r){
-        this.uname = u;
-        this.upass = p;
-        this.role = r;
-    }
     
-    public void setUsername(String u){
-        this.uname = u;
-    }
-    public String getUsername(){
-        return uname;
+    public boolean RegisterUser(User u){
+        try{
+            
+            return true;
+        }catch(Exception er){
+            return false;
+        }
     }
     
-    public void setPassword(String p){
-        this.upass = p;
-    }
-    public String getPassword(){
-        return upass;
-    }
-    
-    public void setRole(String r){
-        this.role = r;
-    }
-    public String getRole(){
-        return role;
-    }
     
 }
