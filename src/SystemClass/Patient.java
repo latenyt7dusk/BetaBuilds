@@ -16,15 +16,85 @@
  */
 package SystemClass;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author HERU
  */
 public class Patient extends PersonalInfo{
     
+    private List<OccularRx> Rx = new ArrayList();
+    private List<Transaction> Tx = new ArrayList();
+    
     public Patient(){
     
     }
+    
+    /**
+     * @param rx List of Occular Diagnostic Records
+     */
+    public void setOccularRx(List<OccularRx> rx){
+        this.Rx = rx;
+    }
+    /**
+     * @param rx Updated Occular Diagnostic Record
+     * @param i Index of Record to be replaced
+     */
+    public void setOccularRx(OccularRx rx,int i){
+        this.Rx.set(i, rx);
+    }
+    /**
+     * @param rx adds new Occular Diagnostic Record
+     */
+    public void addOccularRx(OccularRx rx){
+        this.Rx.add(rx);
+    }
+    /**
+     * @return Occular Diagnostic Record List
+     */
+    public List<OccularRx> getOccularRx(){
+        return Rx;
+    }
 
+    /**
+     * @param i Index of record to be removed
+     */
+    public void RemoveOccularRx(int i){
+        this.Rx.remove(i);
+    }
+    
+    /**
+     * @param tx List of Transaction Record
+     */
+    public void setTransactions(List<Transaction> tx){
+        this.Tx = tx;
+    }
+    /**
+     * @param tx Updated Transaction Record
+     * @param i Index of Transaction Record to be replaced
+     */
+    public void setTransaction(Transaction tx,int i){
+        this.Tx.set(i, tx);
+    }
+    /**
+     * @param tx New Transaction Record to be Added
+     */
+    public void addTransaction(Transaction tx){
+        this.Tx.add(tx);
+    }
+    /**
+     * @return Transaction Record List
+     */
+    public List<Transaction> getTransactions(){
+        return Tx;
+    }
+    /**
+     * @param i Index of Transaction to be Removed
+     */
+    public void removeTransaction(int i){
+        this.Tx.remove(i);
+    }
     
 }

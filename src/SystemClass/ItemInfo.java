@@ -67,6 +67,7 @@ public abstract class ItemInfo {
     }
     
     
+    
     protected class Amount {
     public final String STRING;
     public final double DOUBLE;
