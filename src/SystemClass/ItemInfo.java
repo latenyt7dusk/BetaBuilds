@@ -23,73 +23,103 @@ import java.text.DecimalFormat;
  * @author HERU
  */
 public abstract class ItemInfo {
-    
-    private String id,name,desc;
-    private Amount qty,prc;
-    
-    public void setID(String i){
+
+    private String id, name, desc, tag;
+    private Amount qty, prc;
+
+    public void setID(String i) {
         this.id = i;
     }
-    public String getID(){
+
+    public String getID() {
         return id;
     }
-    
-    public void setName(String n){
+
+    public void setName(String n) {
         this.name = n;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
-    
-    public void setDescription(String d){
+
+    public void setDescription(String d) {
         this.desc = d;
     }
-    public String getDescription(){
+
+    public String getDescription() {
         return desc;
     }
-    
-    public void setQuantity(String q){
+
+    public void setQuantity(String q) {
         this.qty = new Amount(q);
     }
-    public Amount getQuantity(){
+
+    public Amount getQuantity() {
         return qty;
     }
-    
-    public void setPrice(String p){
+
+    public void setPrice(String p) {
         this.prc = new Amount(p);
     }
-    public Amount getPrice(){
+
+    public Amount getPrice() {
         return prc;
     }
-    
-    public double getTotalAmount(){
+
+    public double getTotalAmount() {
         return prc.DOUBLE * qty.INT;
     }
     
-    
-    
-    protected class Amount {
-    public final String STRING;
-    public final double DOUBLE;
-    public final int INT;
-    
-    private Amount(String v){
-        this.STRING = v;
-        this.DOUBLE = Double.parseDouble(v);
-        this.INT = Integer.parseInt(v);
+    /**
+     * @param t Adds a new Tag for Flexible Search t
+     */
+    public void addTag(String t){
+        this.tag = tag.concat(t);
     }
-    
-    public double getDouble(int d){
-        String e = "";
-        for(int i = 0;i < d;i++){
-            e = e.concat("0");
+
+    /**
+     * @param t Removes a Tag t
+     */
+    public void removeTag(String t){
+        String tmp[] = tag.split(t);
+        this.tag = "";
+        for(int i = 0;i < tmp.length;i++){
+            this.tag = tag.concat(tmp[i]);
         }
-        DecimalFormat f = new DecimalFormat("##0."+e);
-        double num = Double.valueOf(f.format(DOUBLE));
-        return num;
     }
-    
-    
-}
-    
+
+    /**
+     * @param t Replace Tag t
+     * @param n Adds Tag n
+     */
+    public void replaceTag(String t,String n){
+        removeTag(t);
+        addTag(n);
+    }
+
+    protected class Amount {
+
+        public final String STRING;
+        public final double DOUBLE;
+        public final int INT;
+
+        private Amount(String v) {
+            this.STRING = v;
+            this.DOUBLE = Double.parseDouble(v);
+            this.INT = Integer.parseInt(v);
+        }
+
+        public double getDouble(int d) {
+            String e = "";
+            for (int i = 0; i < d; i++) {
+                e = e.concat("0");
+            }
+            DecimalFormat f = new DecimalFormat("##0." + e);
+            double num = Double.valueOf(f.format(DOUBLE));
+            return num;
+        }
+
+    }
+
 }
