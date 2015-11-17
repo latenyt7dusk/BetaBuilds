@@ -54,4 +54,9 @@ public class User extends PersonalInfo{
         return role;
     }
     
+    public String getUserEntry(){
+        return getID()+","+uname+","+upass+","+role;
+    }
+    
+    
 }

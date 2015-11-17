@@ -34,7 +34,7 @@ public abstract class PersonalInfo {
     public void setSurname(String s){
         this.sname = s;
     }
-    public String getSname(){
+    public String getSurname(){
         return sname;
         
     }
@@ -98,6 +98,13 @@ public abstract class PersonalInfo {
     }
     public String getContactNumber(){
         return number;
+    }
+    
+    /**
+     * @return Entry context of elements where it is delimited by ","
+     */
+    public String getInfoEntry(){
+        return sname+","+fname+","+mname+","+age+","+gen+","+cstat+","+add+","+number+","+email;
     }
     
 }
