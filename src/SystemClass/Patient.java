@@ -28,10 +28,7 @@ public class Patient extends PersonalInfo{
     private List<OccularRx> Rx = new ArrayList();
     private List<Transaction> Tx = new ArrayList();
     
-    public Patient(){
-    
-    }
-    
+        
     /**
      * @param rx List of Occular Diagnostic Records
      */
