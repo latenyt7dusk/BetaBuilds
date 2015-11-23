@@ -27,6 +27,7 @@ public class Patient extends PersonalInfo{
     
     private List<OccularRx> Rx = new ArrayList();
     private List<Transaction> Tx = new ArrayList();
+    private List<LogRecord> Lx = new ArrayList();
     
         
     /**
@@ -92,6 +93,26 @@ public class Patient extends PersonalInfo{
      */
     public void removeTransaction(int i){
         this.Tx.remove(i);
+    }
+    
+    public void setLogRecords(List<LogRecord> lx){
+        this.Lx = lx;
+    }
+    public List<LogRecord> getLogRecords(){
+        return Lx;
+    }
+    
+    public void setLogRecord(LogRecord lx,int i){
+        this.Lx.set(i, lx);
+    }
+    public void addLogRecord(LogRecord lx){
+        this.Lx.add(lx);
+    }
+    public void removeLogRecord(int i){
+        this.Lx.remove(i);
+    }
+    public void removeLogRecord(LogRecord lx){
+        this.Lx.remove(lx);
     }
     
 }

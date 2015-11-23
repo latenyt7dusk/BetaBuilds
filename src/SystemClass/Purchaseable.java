@@ -20,24 +20,10 @@ package SystemClass;
  *
  * @author HERU
  */
-public class Item extends ItemInfo implements Purchaseable{
+public abstract interface Purchaseable {
     
-    private double AMT;
-    
-    
-    @Override
-    public double doGrab(int i) {
-        return 0;
-    }
-
-    @Override
-    public double unGrab(int i) {
-        return 0;
-    }
-
-    @Override
-    public int getAvailability() {
-        return 0;
-    }
+    public abstract double doGrab(int i);
+    public abstract double unGrab(int i);
+    public abstract int getAvailability();
     
 }

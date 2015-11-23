@@ -24,8 +24,7 @@ import java.text.DecimalFormat;
  */
 public abstract class ItemInfo {
 
-    private String id, name, desc, tag;
-    private Amount qty, prc;
+    private String id, name, desc, tag, qty, prc;
 
     public void setID(String i) {
         this.id = i;
@@ -52,23 +51,24 @@ public abstract class ItemInfo {
     }
 
     public void setQuantity(String q) {
-        this.qty = new Amount(q);
+        this.qty = q;
     }
 
-    public Amount getQuantity() {
+    public String getQuantity() {
         return qty;
     }
 
     public void setPrice(String p) {
-        this.prc = new Amount(p);
+        this.prc = p;
     }
 
-    public Amount getPrice() {
+    public String getPrice() {
         return prc;
     }
 
     public double getTotalAmount() {
-        return prc.DOUBLE * qty.INT;
+        double d = Double.parseDouble(qty)*Double.parseDouble(prc);
+        return d;
     }
     
     /**
@@ -98,28 +98,6 @@ public abstract class ItemInfo {
         addTag(n);
     }
 
-    protected class Amount {
-
-        public final String STRING;
-        public final double DOUBLE;
-        public final int INT;
-
-        private Amount(String v) {
-            this.STRING = v;
-            this.DOUBLE = Double.parseDouble(v);
-            this.INT = Integer.parseInt(v);
-        }
-
-        public double getDouble(int d) {
-            String e = "";
-            for (int i = 0; i < d; i++) {
-                e = e.concat("0");
-            }
-            DecimalFormat f = new DecimalFormat("##0." + e);
-            double num = Double.valueOf(f.format(DOUBLE));
-            return num;
-        }
-
-    }
+    
 
 }
